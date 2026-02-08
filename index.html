@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Purpose Day 💍</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1f1c2c, #928dab);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.12);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        backdrop-filter: blur(10px);
+        width: 320px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+    }
+
+    #no {
+        background: #555;
+        color: white;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 14px;
+        min-height: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Will you marry me? 💍</h1>
+
+    <div class="buttons">
+        <button id="yes">Yes ❤️</button>
+        <button id="no">No 💔</button>
+    </div>
+
+    <p id="message"></p>
+</div>
+
+<script>
+    let noCount = 0;
+    const messages = [
+        "Sure ho? 🤔",
+        "Sach me tumhe shaadi nahi karni?",
+        "Soch lo… mere jaisa nahi milega 😌",
+        "4 baar ho chuka hai, ek baar haan bol do ❤️"
+    ];
+
+    const noBtn = document.getElementById("no");
+    const msg = document.getElementById("message");
+    const yesBtn = document.getElementById("yes");
+
+    noBtn.addEventListener("click", () => {
+        noCount++;
+
+        if (noCount <= 4) {
+            msg.innerText = messages[noCount - 1];
+        } else {
+            noBtn.style.display = "none";
+            msg.innerText = "Ab sirf YES hi bacha hai 😉";
+        }
+    });
+
+    yesBtn.addEventListener("click", () => {
+        document.querySelector(".card").innerHTML = `
+            <h1>She said YES! 💖</h1>
+            <p>Best decision of your life 😍</p>
+        `;
+    });
+</script>
+
+</body>
+</html>
